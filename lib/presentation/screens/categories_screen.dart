@@ -90,12 +90,14 @@ class _CharactersScreenState extends State<CharactersScreen> {
     });
   }
 
+  //start app - loading date category with api
   @override
   void initState() {
     super.initState();
     BlocProvider.of<CategoriesCubit>(context).getAllCharacters();
   }
 
+  //check bloc state loaded list cards or loading indicator
   Widget buildBlocWidget() {
     return BlocBuilder<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
@@ -109,6 +111,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  //inidcator when loading date category
   Widget showLoadingIndicator() {
     return Center(
       child: CircularProgressIndicator(
@@ -117,6 +120,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  //Container cards news
   Widget buildLoadedListWidgets() {
     return SingleChildScrollView(
       child: Container(
@@ -130,6 +134,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  //list cards news
   Widget buildCharactersList() {
     return ListView.builder(
       shrinkWrap: true,
@@ -148,6 +153,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  //title appBar for serach
   Widget _buildAppBarTitle() {
     return Text(
       'List News',
@@ -155,6 +161,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  //Container no internet
   Widget buildNoInternetWidget() {
     return Center(
       child: Container(
@@ -188,7 +195,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
             ? BackButton(
                 color: MyColors.myGrey,
               )
-            : Container(),
+            : null,
         title: _isSearching ? _buildSearchField() : _buildAppBarTitle(),
         actions: _buildAppBarActions(),
       ),
@@ -199,7 +206,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
           Widget child,
         ) {
           final bool connected = connectivity != ConnectivityResult.none;
-
+          //check internet
           if (connected) {
             return buildBlocWidget();
           } else {

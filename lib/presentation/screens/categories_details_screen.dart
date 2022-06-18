@@ -12,6 +12,7 @@ class CategoryDetailsScreen extends StatelessWidget {
   const CategoryDetailsScreen({Key? key, required this.category})
       : super(key: key);
 
+  //appBar
   Widget buildSliverAppBar(String title) {
     return SliverAppBar(
       foregroundColor: MyColors.myWhite,
@@ -47,6 +48,7 @@ class CategoryDetailsScreen extends StatelessWidget {
     );
   }
 
+  //style html elements
   Widget htmlShow(String htmlData) {
     return SingleChildScrollView(
       child: Html(
@@ -109,6 +111,7 @@ class CategoryDetailsScreen extends StatelessWidget {
     );
   }
 
+  //slider images
   Widget scrollImagesPaths(List character) {
     CarouselController buttonCarouselController = CarouselController();
     return Center(

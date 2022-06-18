@@ -20,6 +20,7 @@ class AppRouter {
 
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      //Page list news
       case newsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -27,7 +28,7 @@ class AppRouter {
             child: CharactersScreen(),
           ),
         );
-
+      //Page description new
       case newDetailsScreen:
         final character = settings.arguments as Category;
 
